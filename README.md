@@ -15,7 +15,7 @@ Using the following stack:
 - Billing - [Lemon Squeezy](https://lemonsqueezy.com)
 - Auth (GitHub OAuth) - [Auth.js v5](https://authjs.dev)
 - ORM - [Drizzle](https://orm.drizzle.team/)
-- Datebase - [Cloudflare D1](https://developers.cloudflare.com/d1/)
+- Database - [Cloudflare D1](https://developers.cloudflare.com/d1/)
 - Styling - [Tailwind CSS](https://tailwindcss.com)
 - Components - [Wedges](https://www.lemonsqueezy.com/wedges/docs)
 - Linting - [ESLint](https://eslint.org)
