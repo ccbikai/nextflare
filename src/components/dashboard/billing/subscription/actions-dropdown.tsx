@@ -1,37 +1,42 @@
-"use client";
+'use client'
 
-import { Button, DropdownMenu, Loading } from "@lemonsqueezy/wedges";
-import { MoreVerticalIcon } from "lucide-react";
-import { useState } from "react";
-import { type NewSubscription } from "@/db/schema";
+import { Button, DropdownMenu, Loading } from '@lemonsqueezy/wedges'
+import { MoreVerticalIcon } from 'lucide-react'
+import { useState } from 'react'
+import { type NewSubscription } from '@/db/schema'
 import {
   cancelSub,
   pauseUserSubscription,
   unpauseUserSubscription,
   type getSubscriptionURLs,
-} from "@/app/actions";
-import { LemonSqueezyModalLink } from "./modal-link";
+} from '@/app/actions'
+import { LemonSqueezyModalLink } from './modal-link'
 
 export function SubscriptionActionsDropdown({
   subscription,
   urls,
 }: {
-  subscription: NewSubscription;
-  urls: Awaited<ReturnType<typeof getSubscriptionURLs>>;
+  subscription: NewSubscription
+  urls: Awaited<ReturnType<typeof getSubscriptionURLs>>
 }) {
-  const [loading, setLoading] = useState(false);
+  const [
+    loading,
+    setLoading,
+  ] = useState(false)
 
   if (
-    subscription.status === "expired" ||
-    subscription.status === "cancelled" ||
-    subscription.status === "unpaid"
+    subscription.status === 'expired'
+    || subscription.status === 'cancelled'
+    || subscription.status === 'unpaid'
   ) {
-    return null;
+    return null
   }
 
   return (
     <>
-      {loading && (
+      {loading
+
+      && (
         <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md bg-surface-50/50">
           <Loading size="sm" />
         </div>
@@ -49,30 +54,30 @@ export function SubscriptionActionsDropdown({
 
         <DropdownMenu.Content side="bottom" className="z-10" align="end">
           <DropdownMenu.Group>
-            {!subscription.isPaused && (
+            {!subscription.isPaused
+
+            && (
               <DropdownMenu.Item
                 onClick={async () => {
-                  setLoading(true);
-                  await pauseUserSubscription(subscription.lemonSqueezyId).then(
-                    () => {
-                      setLoading(false);
-                    },
-                  );
+                  setLoading(true)
+                  await pauseUserSubscription(subscription.lemonSqueezyId).then(() => {
+                    setLoading(false)
+                  })
                 }}
               >
                 Pause payments
               </DropdownMenu.Item>
             )}
 
-            {subscription.isPaused && (
+            {subscription.isPaused
+
+            && (
               <DropdownMenu.Item
                 onClick={async () => {
-                  setLoading(true);
-                  await unpauseUserSubscription(
-                    subscription.lemonSqueezyId,
-                  ).then(() => {
-                    setLoading(false);
-                  });
+                  setLoading(true)
+                  await unpauseUserSubscription(subscription.lemonSqueezyId).then(() => {
+                    setLoading(false)
+                  })
                 }}
               >
                 Unpause payments
@@ -94,15 +99,13 @@ export function SubscriptionActionsDropdown({
             <DropdownMenu.Item
               onClick={async () => {
                 if (
-                  // eslint-disable-next-line no-alert -- allow
-                  confirm(
-                    `Please confirm if you want to cancel your subscription.`,
-                  )
+                // eslint-disable-next-line no-alert -- allow
+                  confirm('Please confirm if you want to cancel your subscription.')
                 ) {
-                  setLoading(true);
+                  setLoading(true)
                   await cancelSub(subscription.lemonSqueezyId).then(() => {
-                    setLoading(false);
-                  });
+                    setLoading(false)
+                  })
                 }
               }}
               destructive
@@ -113,5 +116,5 @@ export function SubscriptionActionsDropdown({
         </DropdownMenu.Content>
       </DropdownMenu>
     </>
-  );
+  )
 }

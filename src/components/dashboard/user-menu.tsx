@@ -1,16 +1,19 @@
-"use client";
+'use client'
 
-import { Avatar, DropdownMenu, Loading } from "@lemonsqueezy/wedges";
-import { ChevronRightIcon, MoreVertical } from "lucide-react";
-import { type User } from "next-auth";
-import { useState } from "react";
-import { logout } from "@/app/actions";
+import { Avatar, DropdownMenu, Loading } from '@lemonsqueezy/wedges'
+import { ChevronRightIcon, MoreVertical } from 'lucide-react'
+import { type User } from 'next-auth'
+import { useState } from 'react'
+import { logout } from '@/app/actions'
 
 export function UserMenu(props: { user?: User }) {
-  const { user } = props;
-  const [loading, setLoading] = useState(false);
+  const { user } = props
+  const [
+    loading,
+    setLoading,
+  ] = useState(false)
 
-  if (!user) return null;
+  if (!user) return null
 
   return (
     <DropdownMenu>
@@ -19,18 +22,21 @@ export function UserMenu(props: { user?: User }) {
         disabled={loading}
       >
         <>
-          {loading ? (
-            <div className="flex size-8 items-center justify-center rounded-full bg-surface-200/50">
-              <Loading size="sm" className="size-5" />
-            </div>
-          ) : (
-            <Avatar
-              className="group-disabled:opacity-50"
-              size="sm"
-              src={user.image ?? undefined}
-              alt={user.name ?? undefined}
-            />
-          )}
+          {loading
+            ? (
+              <div className="flex size-8 items-center justify-center rounded-full bg-surface-200/50">
+                <Loading size="sm" className="size-5" />
+              </div>
+              )
+
+            : (
+              <Avatar
+                className="group-disabled:opacity-50"
+                size="sm"
+                src={user.image ?? undefined}
+                alt={user.name ?? undefined}
+              />
+              )}
 
           <div className="text-start leading-5 group-disabled:opacity-50">
             <div className="max-w-[130px] truncate font-medium">
@@ -50,8 +56,8 @@ export function UserMenu(props: { user?: User }) {
         <DropdownMenu.Group>
           <DropdownMenu.Item
             onClick={async () => {
-              setLoading(true);
-              await logout();
+              setLoading(true)
+              await logout()
             }}
           >
             <>
@@ -62,5 +68,5 @@ export function UserMenu(props: { user?: User }) {
         </DropdownMenu.Group>
       </DropdownMenu.Content>
     </DropdownMenu>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react'
 
 export const LemonSqueezyIcon = forwardRef<
-  SVGSVGElement,
-  React.SVGProps<SVGSVGElement>
+    SVGSVGElement,
+    React.SVGProps<SVGSVGElement>
 >((props, ref) => {
   return (
     <svg ref={ref} fill="none" viewBox="0 0 212 28" {...props}>
@@ -103,5 +103,5 @@ export const LemonSqueezyIcon = forwardRef<
         fillRule="evenodd"
       />
     </svg>
-  );
-});
+  )
+})

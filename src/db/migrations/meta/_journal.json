@@ -1,12 +1,12 @@
 {
   "version": "5",
-  "dialect": "pg",
+  "dialect": "sqlite",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1709354465207,
-      "tag": "0000_nifty_patch",
+      "when": 1718939449349,
+      "tag": "0000_dear_cerise",
       "breakpoints": true
     }
   ]

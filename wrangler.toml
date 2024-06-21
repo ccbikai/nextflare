@@ -1,0 +1,8 @@
+name = "nextflare"
+compatibility_flags = ["nodejs_compat"]
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "nextflare"
+database_id = "local"
+migrations_dir = "src/db/migrations"

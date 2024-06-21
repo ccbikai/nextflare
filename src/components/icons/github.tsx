@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react'
 
 export const GithubIcon = forwardRef<
-  SVGSVGElement,
-  React.SVGProps<SVGSVGElement>
+    SVGSVGElement,
+    React.SVGProps<SVGSVGElement>
 >((props, ref) => {
   return (
     <svg ref={ref} viewBox="0 0 496 512" fill="none" {...props}>
@@ -12,5 +12,5 @@ export const GithubIcon = forwardRef<
         stroke="none"
       />
     </svg>
-  );
-});
+  )
+})

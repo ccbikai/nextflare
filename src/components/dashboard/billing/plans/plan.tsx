@@ -1,49 +1,67 @@
-import { SearchXIcon } from "lucide-react";
-import { Alert } from "@lemonsqueezy/wedges";
-import { type NewPlan } from "@/db/schema";
-import { cn, formatPrice } from "@/lib/utils";
-import { Section } from "../../section";
-import { SignupButton } from "./signup-button";
+import { SearchXIcon } from 'lucide-react'
+import { Alert } from '@lemonsqueezy/wedges'
+import { type NewPlan } from '@/db/schema'
+import { cn, formatPrice } from '@/lib/utils'
+import { Section } from '../../section'
+import { SignupButton } from './signup-button'
 
 export function Plan({
   plan,
   currentPlan,
   isChangingPlans = false,
 }: {
-  plan: NewPlan;
-  currentPlan?: NewPlan;
-  isChangingPlans?: boolean;
+  plan: NewPlan
+  currentPlan?: NewPlan
+  isChangingPlans?: boolean
 }) {
-  const { description, id, productName, interval, name, price } = plan;
-  const isCurrent = id && currentPlan?.id === id;
+  const { description, id, productName, interval, name, price } = plan
+  const isCurrent = id && currentPlan?.id === id
 
   return (
-    <Section className={cn("not-prose", isCurrent && "bg-surface-50/40")}>
+    <Section className={cn(
+      'not-prose',
+      isCurrent && 'bg-surface-50/40'
+    )}
+    >
       <Section.Item className="flex-col items-start gap-2">
         <header className="flex w-full items-center justify-between">
-          {name ? (
-            <h2 className="text-lg text-surface-900">
-              {productName} ({name})
-            </h2>
-          ) : null}
+          {name
+            ? (
+              <h2 className="text-lg text-surface-900">
+                {productName}
+                {' '}
+                (
+                {name}
+                )
+              </h2>
+              )
+
+            : null}
         </header>
-        {description ? (
-          <div
-            dangerouslySetInnerHTML={{
-              // Ideally sanitize the description first
-              __html: description,
-            }}
-          />
-        ) : null}
+        {description
+          ? (
+            <div
+              dangerouslySetInnerHTML={{
+                // Ideally sanitize the description first
+                __html: description,
+              }}
+            />
+            )
+
+          : null}
       </Section.Item>
 
       <Section.Item className="flex-col items-start">
-        <div className={cn(isCurrent && "opacity-60")}>
+        <div className={cn(isCurrent && 'opacity-60')}>
           <span className="mr-0.5 text-xl text-surface-900">
             {formatPrice(price)}
           </span>
-          {!plan.isUsageBased && interval ? ` per ${interval}` : null}
-          {plan.isUsageBased && interval ? ` /unit per ${interval}` : null}
+          {!plan.isUsageBased && interval
+            ? ` per ${interval}`
+            : null}
+          {plan.isUsageBased && interval
+            ? ` /unit per ${interval}`
+            : null}
         </div>
 
         <SignupButton
@@ -54,7 +72,7 @@ export function Plan({
         />
       </Section.Item>
     </Section>
-  );
+  )
 }
 
 export function NoPlans() {
@@ -73,21 +91,23 @@ export function NoPlans() {
         There are no plans available at the moment.
       </p>
     </section>
-  );
+  )
 }
 
 export function InfoMessage() {
   return (
     <Alert className="not-prose mt-2">
-      Follow{" "}
+      Follow
+      {' '}
       <a
         href="https://docs.lemonsqueezy.com/guides/developer-guide/testing-going-live#testing-the-checkout"
         target="_blank"
         className="text-gray-900 underline hover:text-primary"
       >
         these instructions
-      </a>{" "}
+      </a>
+      {' '}
       on how to do test payments with Lemon Squeezy.
     </Alert>
-  );
+  )
 }

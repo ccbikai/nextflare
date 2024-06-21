@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion -- allow */
-
-import { defineConfig } from "drizzle-kit";
+import { defineConfig } from 'drizzle-kit'
 
 export default defineConfig({
-  schema: "./src/db/schema.ts",
-  out: "./src/db/migrations",
-  driver: "pg",
+  schema: './src/db/schema.ts',
+  out: './src/db/migrations',
+  dialect: 'sqlite',
+  driver: 'd1-http',
   dbCredentials: {
-    connectionString: process.env.POSTGRES_URL!,
+    accountId: process.env.CLOUDFLARE_ACCOUNT_ID!,
+    databaseId: process.env.CLOUDFLARE_DATABASE_ID!,
+    token: process.env.CLOUDFLARE_D1_TOKEN!
   },
   verbose: true,
-  strict: true,
-});
+  strict: true
+})
