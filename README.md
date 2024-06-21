@@ -1,6 +1,8 @@
 # Nextflare
 
-Next.js App running with Lemon Squeezy on Cloudflare.
+**Next.js App running with Lemon Squeezy on Cloudflare.**
+
+---
 
 This Next.js demo app can be used as a base for building subscription-based SaaS apps.
 
