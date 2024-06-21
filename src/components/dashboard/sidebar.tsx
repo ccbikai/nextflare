@@ -1,11 +1,11 @@
-import { CitrusIcon, HomeIcon, SettingsIcon } from "lucide-react";
-import Link from "next/link";
-import { auth } from "@/auth";
-import { SidebarNav } from "./sidebar-nav";
-import { UserMenu } from "./user-menu";
+import { CitrusIcon, HomeIcon, SettingsIcon } from 'lucide-react'
+import Link from 'next/link'
+import { auth } from '@/auth'
+import { SidebarNav } from './sidebar-nav'
+import { UserMenu } from './user-menu'
 
 export async function Sidebar() {
-  const session = await auth();
+  const session = await auth()
 
   return (
     <aside className="m-5 mr-0 flex flex-col gap-6 rounded-2xl bg-surface-100/70 px-3 pb-3 pt-5">
@@ -34,5 +34,5 @@ export async function Sidebar() {
         <UserMenu user={session?.user} />
       </div>
     </aside>
-  );
+  )
 }

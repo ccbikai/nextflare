@@ -1,0 +1,14 @@
+name = "nextflare"
+compatibility_flags = ["nodejs_compat"]
+
+[[ d1_databases ]]
+binding = "DB"
+database_name = "nextflare"
+database_id = "e969ebe6-b930-49b9-98d8-6a637a6bdf7e"
+migrations_dir = "src/db/migrations"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "nextflare-preview"
+database_id = "1e33e93c-18be-4b65-9e4a-7a1553f075fb"
+migrations_dir = "src/db/migrations"

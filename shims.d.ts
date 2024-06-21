@@ -1,41 +1,49 @@
 interface Window {
-  createLemonSqueezy: () => void;
+  createLemonSqueezy: () => void
   LemonSqueezy: {
     /**
      * Initialises Lemon.js on your page.
      * @param options - An object with a single property, eventHandler, which is a function that will be called when Lemon.js emits an event.
      */
     Setup: (options: {
-      eventHandler: (event: { event: string }) => void;
-    }) => void;
+      eventHandler: (event: { event: string }) => void
+    }) => void
     /**
      * Refreshes `lemonsqueezy-button` listeners on the page.
      */
-    Refresh: () => void;
+    Refresh: () => void
 
     Url: {
       /**
        * Opens a given Lemon Squeezy URL, typically these are Checkout or Payment Details Update overlays.
        * @param url - The URL to open.
        */
-      Open: (url: string) => void;
+      Open: (url: string) => void
 
       /**
        * Closes the current opened Lemon Squeezy overlay checkout window.
        */
-      Close: () => void;
-    };
+      Close: () => void
+    }
     Affiliate: {
       /**
        * Retrieve the affiliate tracking ID
        */
-      GetID: () => string;
+      GetID: () => string
 
       /**
        * Append the affiliate tracking parameter to the given URL
        * @param url - The URL to append the affiliate tracking parameter to.
        */
-      Build: (url: string) => string;
-    };
-  };
+      Build: (url: string) => string
+    }
+  }
+}
+interface CloudflareEnv {
+  // The DB Namespace binding type used here comes
+  // from `@cloudflare/workers-types`. To use it in such
+  // a way make sure that you have installed the package
+  // as a dev dependency and you have added it to your
+  // `tsconfig.json` file under `compilerOptions.types`.
+  DB: D1Database
 }

@@ -1,12 +1,13 @@
-import { Suspense } from "react";
-import { Plans } from "@/components/dashboard/billing/plans/plans";
-import { Subscriptions } from "@/components/dashboard/billing/subscription/subscriptions";
-import { DashboardContent } from "@/components/dashboard/content";
-import { PageTitleAction } from "@/components/dashboard/page-title-action";
-import { PlansSkeleton } from "@/components/dashboard/skeletons/plans";
-import { CardSkeleton } from "@/components/dashboard/skeletons/card";
+import { Suspense } from 'react'
+import { Plans } from '@/components/dashboard/billing/plans/plans'
+import { Subscriptions } from '@/components/dashboard/billing/subscription/subscriptions'
+import { DashboardContent } from '@/components/dashboard/content'
+import { PageTitleAction } from '@/components/dashboard/page-title-action'
+import { PlansSkeleton } from '@/components/dashboard/skeletons/plans'
+import { CardSkeleton } from '@/components/dashboard/skeletons/card'
 
-export const dynamic = "force-dynamic";
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export default function BillingPage() {
   return (
@@ -25,5 +26,5 @@ export default function BillingPage() {
         </Suspense>
       </div>
     </DashboardContent>
-  );
+  )
 }

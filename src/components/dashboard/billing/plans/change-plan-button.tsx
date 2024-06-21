@@ -1,5 +1,5 @@
-import { Button } from "@lemonsqueezy/wedges";
-import Link from "next/link";
+import { Button } from '@lemonsqueezy/wedges'
+import Link from 'next/link'
 
 export function ChangePlan({ planId }: { planId: number }) {
   return (
@@ -8,5 +8,5 @@ export function ChangePlan({ planId }: { planId: number }) {
         Change plan
       </Link>
     </Button>
-  );
+  )
 }

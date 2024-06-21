@@ -1,21 +1,28 @@
-import { DashboardContent } from "@/components/dashboard/content";
-import { PageTitleAction } from "@/components/dashboard/page-title-action";
-import { SetupWebhookButton } from "@/components/dashboard/setup-webhook-button";
-import { hasWebhook } from "../actions";
+import { DashboardContent } from '@/components/dashboard/content'
+import { PageTitleAction } from '@/components/dashboard/page-title-action'
+import { SetupWebhookButton } from '@/components/dashboard/setup-webhook-button'
+import { hasWebhook } from '../actions'
 
-export const dynamic = "force-dynamic";
+export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export default async function Page() {
-  const hasWh = Boolean(await hasWebhook());
+  const hasWh = Boolean(await hasWebhook())
 
   return (
     <DashboardContent title="Dashboard" action={<PageTitleAction />}>
       <p>
-        This page is protected by the <code>auth</code> middleware. Navigate to
+        This page is protected by the
+        {' '}
+        <code>auth</code>
+        {' '}
+        middleware. Navigate to
         the Billing page to get started.
       </p>
 
-      {!hasWh && (
+      {!hasWh
+
+      && (
         <>
           <h2>Webhook Setup</h2>
 
@@ -27,7 +34,8 @@ export default async function Page() {
           </p>
 
           <p className="mb-6">
-            Configure the webhook on{" "}
+            Configure the webhook on
+            {' '}
             <a
               href="https://app.lemonsqueezy.com/settings/webhooks"
               target="_blank"
@@ -42,5 +50,5 @@ export default async function Page() {
         </>
       )}
     </DashboardContent>
-  );
+  )
 }

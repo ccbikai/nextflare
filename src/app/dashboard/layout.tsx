@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-import Script from "next/script";
-import { Sidebar } from "@/components/dashboard/sidebar";
-import { Toaster } from "@/components/toaster";
+import type { Metadata } from 'next'
+import Script from 'next/script'
+import { Sidebar } from '@/components/dashboard/sidebar'
+import { Toaster } from '@/components/toaster'
 
 export const metadata: Metadata = {
-  title: "Dashboard | Lemon Squeezy Next.js Billing Template",
-};
+  title: 'Dashboard | Nextflare',
+}
 
 export default function DashboardLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <>
@@ -26,5 +26,5 @@ export default function DashboardLayout({
       </div>
       <Toaster position="bottom-right" />
     </>
-  );
+  )
 }

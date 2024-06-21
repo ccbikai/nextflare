@@ -1,4 +1,4 @@
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from '@/lib/utils'
 
 export function SubscriptionPrice({
   endsAt,
@@ -7,22 +7,24 @@ export function SubscriptionPrice({
   intervalCount,
   isUsageBased,
 }: {
-  endsAt?: string | null;
-  price: string;
-  interval?: string | null;
-  intervalCount?: number | null;
-  isUsageBased?: boolean;
+  endsAt?: string | null
+  price: string
+  interval?: string | null
+  intervalCount?: number | null
+  isUsageBased?: boolean
 }) {
-  if (endsAt) return null;
+  if (endsAt) return null
 
-  let formattedPrice = formatPrice(price);
+  let formattedPrice = formatPrice(price)
 
   if (isUsageBased) {
-    formattedPrice += "/unit";
+    formattedPrice += '/unit'
   }
 
-  const formattedIntervalCount =
-    intervalCount && intervalCount !== 1 ? `every ${intervalCount} ` : "every";
+  const formattedIntervalCount
+    = intervalCount && intervalCount !== 1
+      ? `every ${intervalCount} `
+      : 'every'
 
-  return <p>{`${formattedPrice} ${formattedIntervalCount} ${interval}`}</p>;
+  return <p>{`${formattedPrice} ${formattedIntervalCount} ${interval}`}</p>
 }

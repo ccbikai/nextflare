@@ -1,4 +1,6 @@
-# Next.js Billing App with Lemon Squeezy
+# Nextflare
+
+Next.js App running with Lemon Squeezy on Cloudflare.
 
 This Next.js demo app can be used as a base for building subscription-based SaaS apps.
 
@@ -11,15 +13,14 @@ Using the following stack:
 - Billing - [Lemon Squeezy](https://lemonsqueezy.com)
 - Auth (GitHub OAuth) - [Auth.js v5](https://authjs.dev)
 - ORM - [Drizzle](https://orm.drizzle.team/)
+- Datebase - [Cloudflare D1](https://developers.cloudflare.com/d1/)
 - Styling - [Tailwind CSS](https://tailwindcss.com)
 - Components - [Wedges](https://www.lemonsqueezy.com/wedges/docs)
-- Serverless Postgres - [Neon](https://neon.tech/)
 - Linting - [ESLint](https://eslint.org)
-- Formatting - [Prettier](https://prettier.io)
 
 This template uses the [Next.js App Router](https://nextjs.org/docs/app). This includes support for enhanced layouts, colocation of components, tests, and styles, component-level data fetching, and more.
 
-Compatbile with [Vercel Edge Functions](https://vercel.com/docs/functions/runtimes/edge-runtime) and serverless deployments.
+Compatbile with [Cloudflare Pages Functions](https://developers.cloudflare.com/pages/functions/) and serverless deployments.
 
 ## Customer Portal vs Integrated Billing
 
@@ -33,9 +34,9 @@ Nonetheless, should you seek a billing solution more closely integrated with you
 
 You need a Lemon Squeezy account and store. If you don't have one already, sign up at [Lemon Squeezy](https://app.lemonsqueezy.com/register).
 
-### 2. Neon Account
+### 2. Cloudflare Account
 
-This template uses Neon + Drizzle ORM for serverless Postgres, making it compatible with the Vercel Edge functions. If you don't have an account, you can sign up for free at [Neon](https://neon.tech/).
+This template uses Cloudflare D1 + Drizzle ORM for serverless Database, making it compatible with the Cloudflare Pages Functions. If you don't have an account, you can sign up for free at [Cloudflare](https://www.cloudflare.com/).
 
 ## Getting Started
 
@@ -61,14 +62,12 @@ cp .env.example .env
 
 Then, fill in the environment variables:
 
-```
+```txt
 LEMONSQUEEZY_API_KEY=
 LEMONSQUEEZY_STORE_ID=
 LEMONSQUEEZY_WEBHOOK_SECRET=
 
 WEBHOOK_URL=
-
-POSTGRES_URL=
 
 AUTH_GITHUB_ID=
 AUTH_GITHUB_SECRET=
@@ -94,13 +93,9 @@ Your local app will need to be able to receive webhook events, which means creat
 
 This is not available when running your site on its local server without some sort of tunnel.
 
-An easy way to set one up is using a service like [ngrok](https://ngrok.com/) or an app like [LocalCan](https://www.localcan.com/).
+An easy way to set one up is using a service like [untun](https://github.com/unjs/untun).
 
 Once you are provided a URL by these services, simply add that in your `.env` file where it says `WEBHOOK_URL=`.
-
-#### Postgres URL
-
-You can get the Postgres URL from your Neon account. For more information refer to the [Neon documentation](https://neon.tech/docs/connect/connect-from-any-app).
 
 #### Auth
 
@@ -116,7 +111,7 @@ Additionally, you need to add a random secret for `AUTH_SECRET` in your `.env` f
 openssl rand -hex 32
 ```
 
-or go to https://generate-secret.now.sh/32 to generate a random secret.
+or go to <https://generate-secret.now.sh/32> to generate a random secret.
 
 Next, you need to provide the URL of your app in `AUTH_URL` in format `https://your-app-url.com/api/auth`. For local development, you can use `http://localhost:3000/api/auth`.
 
@@ -129,7 +124,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Run the following command to set up the database:
 
 ```bash
-pnpm db:push
+pnpm db:migrate:local
+pnpm db:migrate:preview
+pnpm db:migrate:prod
 ```
 
 With Drizzle ORM, you can access the database with [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview). Run the following command to open Drizzle Studio:
@@ -138,7 +135,7 @@ With Drizzle ORM, you can access the database with [Drizzle Studio](https://orm.
 pnpm db:studio
 ```
 
-Go to https://local.drizzle.studio/ to access the database.
+Go to <https://local.drizzle.studio/> to access the database.
 
 ### 5. Run the Development Server
 
@@ -178,3 +175,7 @@ There are a few things to update in your code to go live.
 You need to turn off the **Test mode** in your Lemon Squeezy store and add a new live mode API key. Add this API key as an environment variable in your live server, using the same name `LEMONSQUEEZY_API_KEY`. Your store ID remains the same in both test and live mode, so add that to your server environment variables, as you did for your development site.
 
 You also need to create a new webhook in your live store. Make sure you add the signing secret into the `LEMONSQUEEZY_WEBHOOK_SECRET` variable on your server.
+
+## Credits
+
+This project is ported from <https://github.com/lmsqueezy/nextjs-billing>

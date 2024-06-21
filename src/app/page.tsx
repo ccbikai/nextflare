@@ -1,8 +1,10 @@
-import { CitrusIcon } from "lucide-react";
-import { signIn } from "@/auth";
-import { GithubIcon } from "@/components/icons/github";
-import { LemonSqueezyIcon } from "@/components/icons/lemonsqueezy";
-import { SubmitButton } from "@/components/submit-button";
+import { CitrusIcon } from 'lucide-react'
+import { signIn } from '@/auth'
+import { GithubIcon } from '@/components/icons/github'
+import { LemonSqueezyIcon } from '@/components/icons/lemonsqueezy'
+import { SubmitButton } from '@/components/submit-button'
+
+export const runtime = 'edge'
 
 export default function Home() {
   return (
@@ -13,19 +15,18 @@ export default function Home() {
         </div>
 
         <h1 className="text-balance text-3xl text-surface-900 lg:text-4xl">
-          Sign in to Lemon Stand
+          Sign in to Nextflare
         </h1>
 
         <p className="text-balance text-lg text-surface-500">
-          Lemon Stand is a Next.js billing app template powered by Lemon
-          Squeezy.
+          Nextflare is a Next.js App running with Lemon Squeezy on Cloudflare.
         </p>
 
         <form
           className="pt-2"
           action={async () => {
-            "use server";
-            await signIn("github");
+            'use server'
+            await signIn('github')
           }}
         >
           <SubmitButton
@@ -52,7 +53,7 @@ export default function Home() {
 
           <footer className="mt-auto flex flex-wrap items-center justify-center gap-4 text-sm text-surface-400">
             <a
-              href="https://github.com/lmsqueezy/nextjs-billing"
+              href="https://github.com/ccbikai/nextflare"
               target="_blank"
               rel="noopener noreferrer"
               className="text-surface-400 hover:text-surface-600 hover:underline"
@@ -74,5 +75,5 @@ export default function Home() {
         </div>
       </aside>
     </div>
-  );
+  )
 }
